@@ -11,3 +11,9 @@ dist-ssr
 .vinxi
 __unconfig*
 todos.json
+
+# OAuth secrets & Google credentials
+client_secret*.json
+*.apps.googleusercontent.com.json
+credentials.json
+
