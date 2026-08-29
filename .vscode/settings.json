@@ -1,12 +1,16 @@
 {
-  "npm.packageManager": "npm",
+  "files.associations": {
+    "bun.lock": "json5"
+  },
   "files.watcherExclude": {
-    "**/routeTree.gen.ts": true
+    "**/routeTree.gen.ts": true,
+    "**/bun.lock": true
   },
   "search.exclude": {
     "**/routeTree.gen.ts": true
   },
   "files.readonlyInclude": {
-    "**/routeTree.gen.ts": true
+    "**/routeTree.gen.ts": true,
+    "**/bun.lock": true
   }
 }
