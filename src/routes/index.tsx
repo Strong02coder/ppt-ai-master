@@ -87,7 +87,9 @@ function HomePage() {
       })
     },
     onError: (e) => {
-      toast.error(e instanceof Error ? e.message : 'Could not create presentation')
+      toast.error(
+        e instanceof Error ? e.message : 'Could not create presentation',
+      )
     },
   })
 

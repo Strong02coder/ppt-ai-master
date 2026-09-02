@@ -3,10 +3,12 @@ import { getRequestHeaders } from '@tanstack/react-start/server'
 
 import { auth } from './auth'
 
-export const getSession = createServerFn({ method: 'GET' }).handler(async () => {
-  const headers = getRequestHeaders()
-  return await auth.api.getSession({ headers })
-})
+export const getSession = createServerFn({ method: 'GET' }).handler(
+  async () => {
+    const headers = getRequestHeaders()
+    return await auth.api.getSession({ headers })
+  },
+)
 
 export const ensureSession = createServerFn({ method: 'GET' }).handler(
   async () => {
@@ -18,4 +20,3 @@ export const ensureSession = createServerFn({ method: 'GET' }).handler(
     return session
   },
 )
-
