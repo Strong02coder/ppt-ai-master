@@ -2,24 +2,24 @@
 
 **PPT.ai** is a full-stack web app that turns plain text or notes into slide decks. You describe what you want, pick style and tone, and the app uses AI to draft slides with titles, content, speaker notes, and image prompts. You can preview the deck in the browser, present in a fullscreen slideshow, and download a **`.pptx`** file.
 
-The product name and positioning match the app shell: *“PPT.ai — Generate presentations from text”* (see `src/routes/__root.tsx`).
+The product name and positioning match the app shell: _“PPT.ai — Generate presentations from text”_ (see `src/routes/__root.tsx`).
 
 ---
 
 ## Tech stack
 
-| Area | Choice |
-|------|--------|
-| Framework | [TanStack Start](https://tanstack.com/start) + [TanStack Router](https://tanstack.com/router) (file-based routes, SSR) |
-| UI | React 19, [Tailwind CSS v4](https://tailwindcss.com/), [Radix UI](https://www.radix-ui.com/) / [shadcn-style](https://ui.shadcn.com/) components |
-| Data & cache | [TanStack Query](https://tanstack.com/query), [Prisma 7](https://www.prisma.io/) + PostgreSQL |
-| Auth | [Better Auth](https://www.better-auth.com/) with Google and GitHub OAuth, Prisma adapter |
-| AI | [Vercel AI SDK](https://ai-sdk.dev/) (`ai`, `@ai-sdk/google`) — Gemini for structured slide generation |
-| Background jobs | [Inngest](https://www.inngest.com/) — async `presentation/generate` workflow |
-| Images | [ImageKit](https://imagekit.io/) URLs for slide imagery (see `src/integrations/inngest/functions.ts`) |
-| Export | [PptxGenJS](https://gitbrent.github.io/PptxGenJS/) |
-| Env validation | [@t3-oss/env-core](https://env.t3.gg/) (`src/env.ts`) |
-| Tooling | Vite 8, TypeScript, Vitest, ESLint (TanStack config), Prettier |
+| Area            | Choice                                                                                                                                           |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Framework       | [TanStack Start](https://tanstack.com/start) + [TanStack Router](https://tanstack.com/router) (file-based routes, SSR)                           |
+| UI              | React 19, [Tailwind CSS v4](https://tailwindcss.com/), [Radix UI](https://www.radix-ui.com/) / [shadcn-style](https://ui.shadcn.com/) components |
+| Data & cache    | [TanStack Query](https://tanstack.com/query), [Prisma 7](https://www.prisma.io/) + PostgreSQL                                                    |
+| Auth            | [Better Auth](https://www.better-auth.com/) with Google and GitHub OAuth, Prisma adapter                                                         |
+| AI              | [Vercel AI SDK](https://ai-sdk.dev/) (`ai`, `@ai-sdk/google`) — Gemini for structured slide generation                                           |
+| Background jobs | [Inngest](https://www.inngest.com/) — async `presentation/generate` workflow                                                                     |
+| Images          | [ImageKit](https://imagekit.io/) URLs for slide imagery (see `src/integrations/inngest/functions.ts`)                                            |
+| Export          | [PptxGenJS](https://gitbrent.github.io/PptxGenJS/)                                                                                               |
+| Env validation  | [@t3-oss/env-core](https://env.t3.gg/) (`src/env.ts`)                                                                                            |
+| Tooling         | Vite 8, TypeScript, Vitest, ESLint (TanStack config), Prettier                                                                                   |
 
 ---
 
@@ -49,18 +49,18 @@ The product name and positioning match the app shell: *“PPT.ai — Generate pr
 
 Create a `.env` or `.env.local` in the project root (Prisma also loads these via `prisma.config.ts`).
 
-| Variable | Required | Purpose |
-|----------|----------|---------|
-| `DATABASE_URL` | Yes | PostgreSQL connection string for Prisma |
-| `BETTER_AUTH_SECRET` | Yes* | Secret for Better Auth sessions (*required for real auth; generate e.g. with `npx @better-auth/cli secret`) |
-| `GOOGLE_GENERATIVE_AI_API_KEY` | Yes | Gemini API key for `@ai-sdk/google` / `generateText` in Inngest |
-| `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | For Google sign-in | OAuth credentials |
-| `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` | For GitHub sign-in | OAuth credentials |
-| `IMAGEKIT_PUBLIC_KEY` | Yes (for generation path) | ImageKit public key |
-| `IMAGEKIT_PRIVATE_KEY` | Yes | ImageKit private key |
-| `IMAGEKIT_BASE_URL` | Yes | ImageKit URL endpoint (used when building slide image URLs) |
-| `VITE_APP_TITLE` | No | Optional client-visible app title (`src/env.ts`) |
-| `SERVER_URL` | No | Optional server URL (`src/env.ts`) |
+| Variable                                    | Required                  | Purpose                                                                                                      |
+| ------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `DATABASE_URL`                              | Yes                       | PostgreSQL connection string for Prisma                                                                      |
+| `BETTER_AUTH_SECRET`                        | Yes\*                     | Secret for Better Auth sessions (\*required for real auth; generate e.g. with `npx @better-auth/cli secret`) |
+| `GOOGLE_GENERATIVE_AI_API_KEY`              | Yes                       | Gemini API key for `@ai-sdk/google` / `generateText` in Inngest                                              |
+| `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | For Google sign-in        | OAuth credentials                                                                                            |
+| `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` | For GitHub sign-in        | OAuth credentials                                                                                            |
+| `IMAGEKIT_PUBLIC_KEY`                       | Yes (for generation path) | ImageKit public key                                                                                          |
+| `IMAGEKIT_PRIVATE_KEY`                      | Yes                       | ImageKit private key                                                                                         |
+| `IMAGEKIT_BASE_URL`                         | Yes                       | ImageKit URL endpoint (used when building slide image URLs)                                                  |
+| `VITE_APP_TITLE`                            | No                        | Optional client-visible app title (`src/env.ts`)                                                             |
+| `SERVER_URL`                                | No                        | Optional server URL (`src/env.ts`)                                                                           |
 
 **Better Auth / OAuth:** Configure your provider dashboards so redirect URLs match your environment (e.g. `http://localhost:3000/api/auth/callback/google` for local dev). See [Better Auth docs](https://www.better-auth.com/docs).
 
@@ -119,20 +119,20 @@ Create a `.env` or `.env.local` in the project root (Prisma also loads these via
 
 ## Scripts
 
-| Script | Description |
-|--------|-------------|
-| `pnpm dev` | Vite dev server (TanStack Start) on port 3000 |
-| `pnpm build` | Production build |
-| `pnpm preview` | Preview production build |
-| `pnpm test` | Vitest |
-| `pnpm lint` | ESLint |
-| `pnpm format` | Prettier check |
-| `pnpm check` | Format write + ESLint fix |
-| `pnpm db:generate` | `prisma generate` |
-| `pnpm db:push` | Push schema to DB |
-| `pnpm db:migrate` | Create/apply migrations |
-| `pnpm db:studio` | Prisma Studio |
-| `pnpm db:seed` | Run seed script |
+| Script             | Description                                   |
+| ------------------ | --------------------------------------------- |
+| `pnpm dev`         | Vite dev server (TanStack Start) on port 3000 |
+| `pnpm build`       | Production build                              |
+| `pnpm preview`     | Preview production build                      |
+| `pnpm test`        | Vitest                                        |
+| `pnpm lint`        | ESLint                                        |
+| `pnpm format`      | Prettier check                                |
+| `pnpm check`       | Format write + ESLint fix                     |
+| `pnpm db:generate` | `prisma generate`                             |
+| `pnpm db:push`     | Push schema to DB                             |
+| `pnpm db:migrate`  | Create/apply migrations                       |
+| `pnpm db:studio`   | Prisma Studio                                 |
+| `pnpm db:seed`     | Run seed script                               |
 
 ---
 
