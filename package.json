@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "vite dev --port 3000",
-    "inngest:dev": "npx inngest-cli@latest dev -u http://localhost:3000/api/inngest",
+    "inngest:dev": "NPM_CONFIG_CACHE=$(mktemp -d) /home/syber/.nvm/versions/node/v24.21.0/bin/npx --ignore-scripts=false inngest-cli@latest dev -u http://localhost:3000/api/inngest",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
